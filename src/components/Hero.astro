@@ -1,0 +1,6 @@
+---
+interface Props { title?: string; text?: string; action?: string; actionHref?: string; }
+const { title = 'Confidence in every\ncritical shutoff.', text = 'From everyday service to demanding media, BallValve combines precision manufacturing and application expertise to bring dependable control to your flow system.', action = 'Explore Products', actionHref = '/products/' } = Astro.props;
+const base = import.meta.env.BASE_URL;
+---
+<section class="hero"><div class="container hero-grid"><div class="hero-copy"><p class="eyebrow">INDUSTRIAL FLOW CONTROL / SINCE 2004</p><h1 class="title">{title.split('\n').map(line => <>{line}<br /></>)}</h1><p>{text}</p><a class="button" href={`${base}${actionHref.slice(1)}`}>{action} <span>↓</span></a></div><div class="valve-graphic" aria-hidden="true"><div class="valve"><i></i><b></b></div></div></div></section>

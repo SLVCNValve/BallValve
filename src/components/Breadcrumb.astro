@@ -1,0 +1,6 @@
+---
+interface Props { current: string; }
+const { current } = Astro.props;
+const base = import.meta.env.BASE_URL;
+---
+<nav class="breadcrumbs" aria-label="Breadcrumb"><a href={base}>Home</a><span>/</span>{current}</nav>

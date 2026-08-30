@@ -1,0 +1,6 @@
+---
+import type { CollectionEntry } from 'astro:content';
+const { products } = Astro.props as { products: CollectionEntry<'products'>[] };
+const base = import.meta.env.BASE_URL;
+---
+<div class="table-wrap"><table class="product-table"><thead><tr><th>Product</th><th>Size Range</th><th>Pressure Class</th><th>Temperature Range</th><th>Standard</th></tr></thead><tbody>{products.map(product => <tr><td><a href={`${base}products/${product.id}/`}>{product.data.title}</a></td><td>{product.data.size}</td><td>{product.data.pressure}</td><td>{product.data.temperature}</td><td>{product.data.standard}</td></tr>)}</tbody></table></div>

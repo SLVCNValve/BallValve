@@ -1,0 +1,11 @@
+---
+import '../styles/global.css';
+import '../styles/media.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+interface Props { title?: string; description?: string; }
+const { title = 'BallValve | Industrial Flow Control', description = 'Industrial valve solutions for demanding flow-control applications.' } = Astro.props;
+const base = import.meta.env.BASE_URL;
+---
+<!doctype html><html lang="en"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width" /><meta name="description" content={description} /><link rel="icon" href={`${base}favicon.svg`} /><title>{title}</title></head><body><Header /><main><slot /></main><Footer /><WhatsAppButton /></body></html>

@@ -1,0 +1,5 @@
+---
+const { title = 'Your application deserves the right solution.' } = Astro.props;
+const base = import.meta.env.BASE_URL;
+---
+<section class="cta"><div class="container cta-grid"><div><p class="eyebrow">START A CONVERSATION</p><h2>{title}</h2></div><div><p>Share your key process parameters and an applications engineer will respond within 24 hours.</p><a class="button" href={`${base}contact/`}>Send an Inquiry →</a></div></div></section>

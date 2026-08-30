@@ -1,0 +1,6 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'; import Breadcrumb from '../../components/Breadcrumb.astro';
+const base = import.meta.env.BASE_URL;
+const articles=[{slug:'how-to-select-ball-valve',title:'How to Select an Industrial Ball Valve',text:'Build a clear selection framework around media, pressure, temperature, and end connection.'},{slug:'floating-vs-trunnion',title:'Floating vs. Trunnion-Mounted Ball Valves',text:'Understand the design logic and application boundaries of these two core valve structures.'},{slug:'fugitive-emissions',title:'Fugitive Emissions: Controlling Invisible Leakage',text:'Why packing design and test standards determine long-term plant safety.'}];
+---
+<BaseLayout title="Technical Blog | BallValve"><section class="page-hero"><div class="container"><Breadcrumb current="Technical Blog" /><p class="eyebrow">KNOWLEDGE BASE</p><h1 class="title">Engineering insight<br /><em>from the field.</em></h1></div></section><section class="section container"><div class="article-grid">{articles.map(article=><a class="article-card" href={`${base}blog/${article.slug}/`}><p class="eyebrow">TECHNICAL NOTE</p><h3>{article.title}</h3><p>{article.text}</p></a>)}</div></section></BaseLayout>

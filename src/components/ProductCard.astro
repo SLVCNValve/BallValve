@@ -1,0 +1,6 @@
+---
+import type { CollectionEntry } from 'astro:content';
+const { product } = Astro.props as { product: CollectionEntry<'products'> };
+const base = import.meta.env.BASE_URL;
+---
+<a class:list={['product-card', { 'has-image': product.data.image }]} href={`${base}products/${product.id}/`}><span class="product-code">{product.data.code} / {product.data.category}</span>{product.data.image && <img src={`${base}${product.data.image.slice(1)}`} alt={product.data.imageAlt ?? product.data.title} loading="lazy" />}<h3>{product.data.title}</h3><p>{product.data.summary}</p><span class="product-arrow">↗</span></a>

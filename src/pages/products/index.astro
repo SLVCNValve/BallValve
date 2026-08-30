@@ -1,0 +1,5 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'; import Breadcrumb from '../../components/Breadcrumb.astro'; import ProductCard from '../../components/ProductCard.astro'; import ProductTable from '../../components/ProductTable.astro'; import InquiryCTA from '../../components/InquiryCTA.astro'; import { getCollection } from 'astro:content';
+const products = await getCollection('products');
+---
+<BaseLayout title="Products | BallValve"><section class="page-hero"><div class="container"><Breadcrumb current="Products" /><p class="eyebrow">PRODUCT PORTFOLIO</p><h1 class="title">Valves for critical<br /><em>flow applications.</em></h1><p>Floating, trunnion-mounted, and specialty valve solutions for standard supply and engineered projects.</p></div></section><section class="section container"><div class="product-grid">{products.map(product => <ProductCard product={product} />)}</div></section><section class="section container"><div class="section-heading"><div><p class="eyebrow">QUICK COMPARISON</p><h2>Key specifications</h2></div></div><ProductTable products={products} /></section><InquiryCTA /></BaseLayout>
