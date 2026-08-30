@@ -6,7 +6,7 @@ const base = process.env.BASE_PATH
   : '/';
 
 export default defineConfig({
-  site: 'https://example.github.io',
+  site: 'https://slvcnvalve.github.io',
   base,
   output: 'static',
   integrations: [sitemap()],
