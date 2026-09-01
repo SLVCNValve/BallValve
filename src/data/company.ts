@@ -7,9 +7,11 @@ export const company = {
 };
 
 export const navItems = [
+  { label: 'Home', href: '/' },
   { label: 'Products', href: '/products/' },
-  { label: 'Industries', href: '/industries/' },
-  { label: 'Manufacturing', href: '/manufacturing/' },
+  { label: 'Applications', href: '/industries/' },
   { label: 'Quality', href: '/quality/' },
+  { label: 'Resources', href: '/blog/' },
   { label: 'About Us', href: '/about/' },
+  { label: 'Contact', href: '/contact/' },
 ];
