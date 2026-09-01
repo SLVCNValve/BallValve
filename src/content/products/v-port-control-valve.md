@@ -8,6 +8,8 @@ pressure: Class 150 - 600
 temperature: -29 - 350°C
 standard: IEC 60534 / API 598
 applications: [Pulp & Paper, Chemical Processing, Mining]
+image: /images/products/pneumatic-threaded.jpg
+imageAlt: Pneumatic actuated V-port control ball valve
 ---
 
 Equal-percentage flow characteristics provide precise control of fibrous, slurry, and complex process media.

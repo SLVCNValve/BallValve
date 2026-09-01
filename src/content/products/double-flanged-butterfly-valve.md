@@ -8,8 +8,8 @@ pressure: PN 10 - 16
 temperature: -10 - 120°C
 standard: EN 593 / API 609
 applications: [Water Treatment, HVAC, General Industry]
-image: /images/1.jpg
-imageAlt: Blue lever-operated double-flanged butterfly valve
+image: /images/products/high-pressure-red.jpg
+imageAlt: Industrial double-flanged butterfly valve
 ---
 
 The double-flanged body provides stable installation across a range of general flow-control applications.

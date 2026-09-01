@@ -2,5 +2,19 @@
 import BaseLayout from '../../layouts/BaseLayout.astro'; import Breadcrumb from '../../components/Breadcrumb.astro'; import InquiryCTA from '../../components/InquiryCTA.astro'; import { getCollection } from 'astro:content';
 export async function getStaticPaths() { const products = await getCollection('products'); return products.map(product => ({ params: { slug: product.id }, props: { product } })); }
 const { product } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const image = product.data.image || '/images/products/manual-hp.png';
+const productSchema = { '@context': 'https://schema.org', '@type': 'Product', name: product.data.title, description: product.data.summary, brand: { '@type': 'Brand', name: 'SLVCN Valve' }, category: product.data.category, additionalProperty: [
+  { '@type': 'PropertyValue', name: 'Size range', value: product.data.size },
+  { '@type': 'PropertyValue', name: 'Pressure class', value: product.data.pressure },
+  { '@type': 'PropertyValue', name: 'Temperature range', value: product.data.temperature },
+  { '@type': 'PropertyValue', name: 'Standards', value: product.data.standard }
+] };
 ---
-<BaseLayout title={`${product.data.title} | BallValve`}><section class="page-hero"><div class="container"><Breadcrumb current={product.data.title} /><p class="eyebrow">{product.data.code} / {product.data.category}</p><h1 class="title">{product.data.title}</h1><p>{product.data.summary}</p></div></section><section class="section container"><div class="contact-grid"><div><p class="eyebrow">TECHNICAL SPECIFICATION</p><h2 style="font-size:40px;margin-top:0">Specifications</h2></div><div class="table-wrap"><table class="product-table"><tbody><tr><th>Size Range</th><td>{product.data.size}</td></tr><tr><th>Pressure Class</th><td>{product.data.pressure}</td></tr><tr><th>Temperature Range</th><td>{product.data.temperature}</td></tr><tr><th>Standard</th><td>{product.data.standard}</td></tr><tr><th>Typical Applications</th><td>{product.data.applications.join(' / ')}</td></tr></tbody></table></div></div></section><InquiryCTA title="Get a configuration tailored to your application." /></BaseLayout>
+<BaseLayout title={`${product.data.title} | SLVCN Valve`} description={product.data.summary} type="product">
+  <section class="detail-hero"><div class="container"><Breadcrumb current={product.data.title} /><div class="detail-hero-grid"><div><p class="eyebrow">{product.data.code} / {product.data.category}</p><h1 class="title">{product.data.title}</h1><p>{product.data.summary}</p><a class="button" href={`${base}contact/`}>Request Technical Quote →</a></div><div class="detail-image"><img src={`${base}${image.slice(1)}`} alt={product.data.imageAlt ?? product.data.title} /></div></div></div></section>
+  <section class="container detail-body"><div><p class="eyebrow">ENGINEERED FOR THE DUTY</p><h2>Technical overview</h2><p>Typical options are shown for early project review. Please provide service conditions so our team can validate the final configuration and applicable documentation.</p></div><div><table class="spec-table"><tbody><tr><th>Size range</th><td>{product.data.size}</td></tr><tr><th>Pressure class</th><td>{product.data.pressure}</td></tr><tr><th>Temperature range</th><td>{product.data.temperature}</td></tr><tr><th>Design standards</th><td>{product.data.standard}</td></tr><tr><th>Valve family</th><td>{product.data.category}</td></tr></tbody></table></div></section>
+  <section class="application-band"><div class="container application-grid"><div><p class="eyebrow">TYPICAL APPLICATIONS</p><h2>Where it fits.</h2></div><div class="application-tags">{product.data.applications.map(application => <span>{application}</span>)}</div></div></section>
+  <InquiryCTA title={`Discuss your ${product.data.title.toLowerCase()} requirements.`} />
+  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+</BaseLayout>

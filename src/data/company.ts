@@ -1,9 +1,9 @@
 export const company = {
-  name: 'BallValve',
+  name: 'SLVCN Valve',
   email: 'engineering@ballvalve.example',
   whatsapp: '8613800000000',
   founded: '2004',
-  description: 'Industrial valve solutions for demanding flow-control applications.',
+  description: 'Industrial ball valve solutions for demanding flow-control applications.',
 };
 
 export const navItems = [

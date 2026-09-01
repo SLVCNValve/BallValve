@@ -8,8 +8,8 @@ pressure: Class 1500
 temperature: -29 - 425°C
 standard: API 6D / ASME B16.34
 applications: [Oil & Gas, High-Pressure Pipelines, Process Isolation]
-image: /images/2.jpg
-imageAlt: Class 1500 twin-ball DBB flanged ball valve
+image: /images/products/dbb-handle.jpg
+imageAlt: Twin-ball double block and bleed valve
 ---
 
 The compact dual-handle design provides double isolation and bleed capability for high-pressure service.

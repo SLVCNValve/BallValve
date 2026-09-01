@@ -4,8 +4,10 @@ import '../styles/media.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
-interface Props { title?: string; description?: string; }
-const { title = 'BallValve | Industrial Flow Control', description = 'Industrial valve solutions for demanding flow-control applications.' } = Astro.props;
+interface Props { title?: string; description?: string; type?: string; }
+const { title = 'SLVCN Valve | Industrial Ball Valve Manufacturer', description = 'SLVCN engineers industrial ball valves for critical flow-control applications worldwide.', type = 'website' } = Astro.props;
 const base = import.meta.env.BASE_URL;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const organization = { '@context': 'https://schema.org', '@type': 'Organization', name: 'SLVCN Valve', url: Astro.site?.toString(), description, email: 'engineering@ballvalve.example' };
 ---
-<!doctype html><html lang="en"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width" /><meta name="description" content={description} /><link rel="icon" href={`${base}favicon.svg`} /><title>{title}</title></head><body><Header /><main><slot /></main><Footer /><WhatsAppButton /></body></html>
+<!doctype html><html lang="en"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><meta name="description" content={description} /><meta name="robots" content="index,follow" /><link rel="canonical" href={canonical} /><link rel="icon" href={`${base}favicon.svg`} /><meta property="og:type" content={type} /><meta property="og:title" content={title} /><meta property="og:description" content={description} /><meta property="og:url" content={canonical} /><title>{title}</title><script type="application/ld+json" set:html={JSON.stringify(organization)} /></head><body><Header /><main><slot /></main><Footer /><WhatsAppButton /></body></html>
