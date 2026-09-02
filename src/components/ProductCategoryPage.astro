@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumb from './Breadcrumb.astro';
+import InquiryCTA from './InquiryCTA.astro';
+
+type CategoryProduct = { title: string; description: string; image: string };
+const { title, eyebrow, description, image, imageAlt, applications, products } = Astro.props as { title: string; eyebrow: string; description: string; image: string; imageAlt: string; applications: string[]; products: CategoryProduct[] };
+const base = import.meta.env.BASE_URL;
+---
+<BaseLayout title={`${title} | SLVCN Valve`} description={description}>
+  <section class="page-hero category-hero"><div class="container category-hero-grid"><div><Breadcrumb current={title} /><p class="eyebrow">{eyebrow}</p><h1 class="title">{title}</h1><p>{description}</p><a class="button blue" href={`${base}contact/`}>Request a Quote <span>→</span></a></div><img src={`${base}${image}`} alt={imageAlt} /></div></section>
+  <section class="section container"><div class="section-heading"><div><p class="eyebrow">PRODUCT RANGE</p><h2>Configurations for your process.</h2></div><p>Share your size, pressure class, media, temperature, and automation requirements for a matched configuration.</p></div><div class="category-product-grid">{products.map(product => <article class="category-product-card"><img src={`${base}images/products/${product.image}`} alt={product.title} loading="lazy" /><div><h2>{product.title}</h2><p>{product.description}</p><a href={`${base}contact/`}>Discuss this valve <span>→</span></a></div></article>)}</div></section>
+  <section class="application-band"><div class="container application-grid"><div><p class="eyebrow">TYPICAL APPLICATIONS</p><h2>Built around the service.</h2><p>Our engineering team can configure materials, seats, end connections, actuators, and accessories for the operating conditions of your project.</p></div><div class="application-tags">{applications.map(application => <span>{application}</span>)}</div></div></section>
+  <InquiryCTA title={`Need help selecting ${title.toLowerCase()}?`} />
+</BaseLayout>
+<style>
+  .category-hero-grid{display:grid;grid-template-columns:1fr 42%;gap:7%;align-items:center}.category-hero-grid>img{width:100%;height:330px;object-fit:contain;mix-blend-mode:multiply}.category-product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.category-product-card{border:1px solid var(--line);background:#fff}.category-product-card>img{display:block;width:100%;height:220px;object-fit:contain;background:var(--ice);mix-blend-mode:multiply}.category-product-card>div{padding:20px}.category-product-card h2{margin:0;font-size:20px}.category-product-card p{min-height:56px;color:var(--slate);font-size:13px;line-height:1.6}.category-product-card a{color:var(--blue);font-size:12px;font-weight:700;text-decoration:none}@media(max-width:760px){.category-hero-grid,.category-product-grid{grid-template-columns:1fr}.category-hero-grid>img{height:250px}.category-product-card p{min-height:0}}
+</style>
